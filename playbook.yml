@@ -1,0 +1,12 @@
+---
+- name: Gather facts from Cisco IOS XE device
+  hosts: iosxe
+  gather_facts: no
+  tasks:
+    - name: Get the device facts
+      ios_facts:
+      register: result
+
+    - name: Show the results
+      debug:
+        var: result
