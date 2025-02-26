@@ -1,0 +1,40 @@
+# ansible-playbook -i inventory.yml playbook.yml
+[WARNING]: Collection cisco.ios does not support Ansible version 2.12.10
+
+PLAY [Gather facts from Cisco IOS XE device] ************************************************************************************************
+
+TASK [Get the device facts] *****************************************************************************************************************
+[WARNING]: Collection ansible.netcommon does not support Ansible version 2.12.10
+[WARNING]: Collection ansible.utils does not support Ansible version 2.12.10
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+ok: [devnetsandboxiosxe.cisco.com]
+
+TASK [Show the results] *********************************************************************************************************************
+[WARNING]: Collection ansible.netcommon does not support Ansible version 2.12.10
+[WARNING]: Collection ansible.utils does not support Ansible version 2.12.10
+ok: [devnetsandboxiosxe.cisco.com] => {
+    "result": {
+        "ansible_facts": {
+            "ansible_net_api": "cliconf",
+            "ansible_net_gather_network_resources": [],
+            "ansible_net_gather_subset": [
+                "default"
+            ],
+            "ansible_net_hostname": "Cat8000V",
+            "ansible_net_image": "bootflash:packages.conf",
+            "ansible_net_iostype": "IOS-XE",
+            "ansible_net_model": "C8000V",
+            "ansible_net_operatingmode": "autonomous",
+            "ansible_net_python_version": "3.8.10",
+            "ansible_net_serialnum": "9OBXJHNNU5V",
+            "ansible_net_system": "ios",
+            "ansible_net_version": "17.12.02",
+            "ansible_network_resources": {}
+        },
+        "changed": false,
+        "failed": false
+    }
+}
+
+PLAY RECAP **********************************************************************************************************************************
+devnetsandboxiosxe.cisco.com : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
