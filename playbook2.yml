@@ -1,0 +1,48 @@
+---
+- name: Gather facts from Cisco IOS XE device
+  hosts: iosxe
+  gather_facts: no
+  tasks:
+    - name: Get the device facts
+      ios_facts:
+      register: result
+
+    - name: Show the results
+      debug:
+        var: result
+    - name: Run multiple commands on remote nodes
+      cisco.ios.ios_command:
+        commands: 
+         - show version
+         - show interfaces
+        wait_for:
+         - result[0] contains IOS
+         - result[1] contains Loopback0
+
+    - name: Display the output of show version
+      debug:
+        var: result.stdout[0]
+
+    - name: Display the output of show interfaces
+      debug:
+        var: result.stdout[1]
+
+    - name: Run show version command
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: result_version
+
+    - name: Display the output of show version
+      debug:
+        var: result_version.stdout
+
+    - name: Run show ip interface brief command
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief
+      register: result_ip_interfaces
+
+    - name: Display the output of show ip interface brief
+      debug:
+              var: result_ip_interfaces.stdout
